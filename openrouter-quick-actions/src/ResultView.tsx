@@ -23,7 +23,15 @@ export default function ResultView(config: ResultViewConfig) {
       <ActionPanel title="Actions">
         <Action.CopyToClipboard title="Copy Results" content={response} />
         <Action.Paste title="Paste Results" content={response} />
-        <Action title="Retry" onAction={runInference} shortcut={{ modifiers: ["cmd"], key: "r" }} icon={Icon.Repeat} />
+        <Action
+          title="Retry"
+          onAction={runInference}
+          shortcut={{
+            macOS: { modifiers: ["cmd"], key: "r" },
+            windows: { modifiers: ["ctrl"], key: "r" },
+          }}
+          icon={Icon.Repeat}
+        />
       </ActionPanel>
     );
   }, [loading, response, runInference]);
